@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GiftApp</string>
+    <string name="add_gifts_activity">Add Gifts</string>
+    <string name="view_gifts_activity">View Gifts</string>
+    <string name="purchased_gifts_activity">Purchased Gifts</string>
 </resources>

@@ -16,6 +16,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".AddGifts"
+            android:label = "Add a Gift"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.giftapp.MainActivity" />
+        </activity>
+
+        <activity android:name=".PurchasedGifts"
+            android:label = "Purchase a Gift"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.giftapp.MainActivity" />
+        </activity>
+
+        <activity android:name=".ViewGifts"
+            android:label = "View Your Gifts"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.giftapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
