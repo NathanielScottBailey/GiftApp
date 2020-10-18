@@ -25,7 +25,11 @@ public class Gift {
         this.forWhom = forWhom;
         this.giftName = giftName;
         this.giftPrice = giftPrice;
-        this.giftNotes = giftNotes;
+        if(giftNotes.isEmpty()){
+            this.giftNotes = "";
+        }else{
+            this.giftNotes = giftNotes;
+        }
     }
 
     public String getForWhom() {
