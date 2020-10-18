@@ -2,7 +2,9 @@ package com.example.giftapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,13 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = "GiftAppLog: ";
+
+    /**
+     * Storage class
+     * You can use that to store gifts and load gifts
+     */
+    public Storage store = new Storage();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
