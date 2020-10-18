@@ -3,4 +3,9 @@
     <string name="add_gifts_activity">Add Gifts</string>
     <string name="view_gifts_activity">View Gifts</string>
     <string name="purchased_gifts_activity">Purchased Gifts</string>
+    <string name="gift_price">Gift price :</string>
+    <string name="gift_notes">Gift notes :</string>
+    <string name="for_whom">For Whom :</string>
+    <string name="gift_name">Gift name :</string>
+    <string name="add_gift">Add Gift</string>
 </resources>
