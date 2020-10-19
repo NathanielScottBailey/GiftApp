@@ -61,10 +61,10 @@ public class ViewGifts extends Activity {
     }
 
     private void checkPurchase(int index) {
+        view_gift_result.append("Purchased: ");
         if (Storage.get_x_element(index).getPurchased() == true)
-            view_gift_result.append("Purchased\n");
+            view_gift_result.append("Yes\n");
         else
-            view_gift_result.append("Not Yet Purchased\n");
+            view_gift_result.append("No\n");
     }
-
 }
