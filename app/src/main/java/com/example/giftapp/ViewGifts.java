@@ -31,6 +31,7 @@ public class ViewGifts extends Activity {
             displayGift(i);
             displayPrice(i);
             displayNotes(i);
+            checkPurchase(i);
             view_gift_result.append("\n");
         }
     }
@@ -59,5 +60,11 @@ public class ViewGifts extends Activity {
         view_gift_result.append("\n");
     }
 
+    private void checkPurchase(int index) {
+        if (Storage.get_x_element(index).getPurchased() == true)
+            view_gift_result.append("Purchased\n");
+        else
+            view_gift_result.append("Not Yet Purchased\n");
+    }
 
 }
