@@ -9,6 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = "GiftAppLog: ";
@@ -17,12 +23,20 @@ public class MainActivity extends AppCompatActivity {
      * Storage class
      * You can use that to store gifts and load gifts
      */
+    public Storage gifts = new Storage();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        gifts.load_data(getSharedPreferences("shared preferences", MODE_PRIVATE));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gifts.save_data(getSharedPreferences("shared preferences", MODE_PRIVATE));
     }
 
     public void view_add_gifts(View view){
@@ -42,4 +56,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewGifts.class);
         startActivity(intent);
     }
+
 }

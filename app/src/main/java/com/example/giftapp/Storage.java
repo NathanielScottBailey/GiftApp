@@ -1,5 +1,11 @@
 package com.example.giftapp;
 
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Storage {
@@ -44,13 +50,29 @@ public class Storage {
         return collection.size();
     }
 
-    public int save_data(){
-
-        return 0;
+    /**
+     * saved the entire arraylist to the devices memory
+     * @param sharedPreferences passes in getSharedPreferences("shared preferences", MODE_PRIVATE)
+     */
+    public void save_data(SharedPreferences sharedPreferences){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(collection);
+        editor.putString("gifts", json);
+        editor.apply();
     }
 
-    public int load_data(){
-
-        return 0;
+    /**
+     * loads the entire arraylist to the devices memory
+     * @param sharedPreferences passes in getSharedPreferences("shared preferences", MODE_PRIVATE)
+     */
+    public void load_data(SharedPreferences sharedPreferences){
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("gifts", null);
+        Type type = new TypeToken<ArrayList<Gift>>() {}.getType();
+        ArrayList <Gift> loading = new ArrayList<Gift>();
+        collection = gson.fromJson(json, type);
+        if (collection == null) {collection = new ArrayList<>();
+        }
     }
 }
