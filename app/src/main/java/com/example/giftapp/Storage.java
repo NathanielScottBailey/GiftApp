@@ -12,8 +12,8 @@ public class Storage {
     /**
      * Add a gift by each string element
      */
-    public static void add_gift (String forWhom, String giftName, String giftPrice, String giftNotes){
-        collection.add(new Gift(forWhom,giftName,giftPrice,giftNotes));
+    public static void add_gift (String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased){
+        collection.add(new Gift(forWhom,giftName,giftPrice,giftNotes,purchased));
     }
 
     /**
@@ -42,5 +42,15 @@ public class Storage {
     }
     public static int size(){
         return collection.size();
+    }
+
+    public int save_data(){
+
+        return 0;
+    }
+
+    public int load_data(){
+
+        return 0;
     }
 }

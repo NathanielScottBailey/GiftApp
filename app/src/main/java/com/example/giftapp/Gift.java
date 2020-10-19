@@ -11,6 +11,7 @@ public class Gift {
      * Attributes for gift
      */
     private String forWhom, giftName, giftPrice, giftNotes;
+    private boolean purchased;
 
     /**
      * Only notes can be empty
@@ -19,7 +20,7 @@ public class Gift {
      * @param giftPrice The price of the gift idea
      * @param giftNotes notes about the gift
      */
-    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes) {
+    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased) {
         if(forWhom.isEmpty() || giftName.isEmpty() || giftPrice.isEmpty()){
             throw new IllegalArgumentException();
         }
@@ -31,6 +32,7 @@ public class Gift {
         }else{
             this.giftNotes = giftNotes;
         }
+        this.purchased = purchased;
     }
 
     public String getForWhom() {
@@ -48,6 +50,8 @@ public class Gift {
     public String getGiftNotes() {
         return giftNotes;
     }
+
+    public boolean getPurchased() {return purchased;}
 
     public void setGiftNotes(String giftNotes) {
         this.giftNotes = giftNotes;
