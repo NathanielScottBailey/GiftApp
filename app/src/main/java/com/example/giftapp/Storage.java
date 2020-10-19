@@ -47,25 +47,38 @@ public class Storage {
         return collection.size();
     }
 
-    public int save_data(){
-        SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+    /**
+     * This function will save the ArrayList onto the device for now
+     * Later we might add a sync for database use
+     * @return the number of saved gift objects
+     */
+    public int save_data(SharedPreferences sharedpreferences){
+
+        // Working on it - Patrick
+
+        int count = 0;
         SharedPreferences.Editor editor = sharedpreferences.edit();
-
-
-        for(int i=0;i<collection.size();++i) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(i + ".1", collection.get(0).getForWhom());
-            editor.putString(i + ".2", collection.get(0).getGiftName());
-            editor.putString(i + ".3", collection.get(0).getGiftPrice());
-            editor.putString(i + ".4", collection.get(0).getGiftNotes());
-            editor.commit();
+        editor.putString("size",""+collection.size());
+        for(;count<collection.size();++count) {
+            editor.putString(count + ".1", collection.get(0).getForWhom());
+            editor.putString(count + ".2", collection.get(0).getGiftName());
+            editor.putString(count + ".3", collection.get(0).getGiftPrice());
+            editor.putString(count + ".4", collection.get(0).getGiftNotes());
         }
-
-
+        editor.commit();
+        return count;
     }
+
+    /**
+     * This function loads the data from the device and stores it in the collection Arraylist
+     * @return number of loaded gift objects
+     */
     public int load_data(){
 
+        // Working on it - Patrick
+        
+        return 0;
     }
 
 
