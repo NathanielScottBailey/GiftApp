@@ -5,6 +5,7 @@
 package com.example.giftapp;
 
 public class Gift {
+    public static final String LOG_TAG = "GiftAppLog: ";
 
     /**
      * Attributes for gift
