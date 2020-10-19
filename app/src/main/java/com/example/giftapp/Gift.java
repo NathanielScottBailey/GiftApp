@@ -19,20 +19,21 @@ public class Gift {
      * @param giftName The name of the gift
      * @param giftPrice The price of the gift idea
      * @param giftNotes notes about the gift
+     *        purchased whether or not the gift has been purchased
      */
-    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased) {
+    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes) {
         if(forWhom.isEmpty() || giftName.isEmpty() || giftPrice.isEmpty()){
             throw new IllegalArgumentException();
         }
         this.forWhom = forWhom;
         this.giftName = giftName;
         this.giftPrice = giftPrice;
+        this.purchased = false;
         if(giftNotes.isEmpty()){
             this.giftNotes = "";
         }else{
             this.giftNotes = giftNotes;
         }
-        this.purchased = purchased;
     }
 
     public String getForWhom() {
@@ -51,9 +52,13 @@ public class Gift {
         return giftNotes;
     }
 
-    public boolean getPurchased() {return purchased;}
+    public boolean getPurchased(){ return purchased; }
 
     public void setGiftNotes(String giftNotes) {
         this.giftNotes = giftNotes;
+    }
+
+    public void setPurchased(boolean purchased){
+        this.purchased = purchased;
     }
 }
