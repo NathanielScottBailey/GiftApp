@@ -22,7 +22,7 @@ public class AddGifts extends Activity {
         EditText giftNotes = findViewById(R.id.add_input4);
 
         Gift giftToAdd = new Gift(forWhom.getText().toString(), giftName.getText().toString(),
-                giftPrice.getText().toString(), giftNotes.getText().toString());
+                giftPrice.getText().toString(), giftNotes.getText().toString(),false);
 
         Storage.add_gift(giftToAdd);
 
