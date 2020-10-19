@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
 public class AddGifts extends Activity {
     public static final String LOG_TAG = "GiftAppLog: ";
 

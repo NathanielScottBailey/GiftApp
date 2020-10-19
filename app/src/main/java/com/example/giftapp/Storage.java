@@ -7,19 +7,19 @@ public class Storage {
     /**
      * Arraylist of gifts
      */
-    private ArrayList <Gift> collection = new ArrayList<Gift>();
+    private static ArrayList <Gift> collection = new ArrayList<Gift>();
 
     /**
      * Add a gift by each string element
      */
-    public void add_gift (String forWhom, String giftName, String giftPrice, String giftNotes){
+    public static void add_gift (String forWhom, String giftName, String giftPrice, String giftNotes){
         collection.add(new Gift(forWhom,giftName,giftPrice,giftNotes));
     }
 
     /**
      * @param toAdd an Gift object that gets added to the arraylist
      */
-    public void add_gift (Gift toAdd){
+    public static void add_gift (Gift toAdd){
         collection.add(toAdd);
     }
 
@@ -28,7 +28,7 @@ public class Storage {
      * @param toRemove is the same element that gets removed
      * @return returns boolean if removed successfully
      */
-    public boolean remove(Gift toRemove){
+    public static boolean remove(Gift toRemove){
         return collection.remove(toRemove);
     }
 
@@ -37,10 +37,10 @@ public class Storage {
      * @param x element to return
      * @return returns the x element
      */
-    public Gift get_x_element(int x){
+    public static Gift get_x_element(int x){
         return collection.get(x);
     }
-    public int size(){
+    public static int size(){
         return collection.size();
     }
 }

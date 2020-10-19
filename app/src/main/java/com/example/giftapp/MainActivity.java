@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
      * Storage class
      * You can use that to store gifts and load gifts
      */
-    public Storage store = new Storage();
 
 
     @Override
