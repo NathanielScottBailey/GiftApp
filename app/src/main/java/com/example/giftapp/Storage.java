@@ -15,6 +15,10 @@ public class Storage {
      */
     private static ArrayList <Gift> collection = new ArrayList<Gift>();
 
+    public static ArrayList<Gift> getGiftArrayList() {
+        return collection;
+    }
+
     /**
      * Add a gift by each string element
      */

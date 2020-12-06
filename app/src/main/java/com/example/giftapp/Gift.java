@@ -61,4 +61,5 @@ public class Gift {
     public void setPurchased(boolean purchased){
         this.purchased = purchased;
     }
+
 }

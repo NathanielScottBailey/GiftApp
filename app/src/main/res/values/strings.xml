@@ -9,4 +9,5 @@
     <string name="gift_name">Gift name :</string>
     <string name="add_gift">Add Gift</string>
     <string name="view_gifts_text">List of Gifts:</string>
+    <string name="list_of_gifts">List of Gifts</string>
 </resources>
