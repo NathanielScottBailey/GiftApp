@@ -89,6 +89,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         });
 
 
+
+
     }
 
     /**
@@ -111,8 +113,21 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         public void ClickedGift(Gift gift);
     }
 
+
     public void remove(int position) {
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, giftArrayList.size());
     }
+
+    public void clear() {
+        int size = giftArrayList.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                giftArrayList.remove(0);
+            }
+
+            notifyItemRangeRemoved(0, size);
+        }
+    }
+
 }

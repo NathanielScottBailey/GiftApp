@@ -79,4 +79,8 @@ public class Storage {
         if (collection == null) {collection = new ArrayList<>();
         }
     }
+
+    public static void clear() {
+        collection.clear();
+    }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ViewGifts">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -19,6 +19,14 @@
             android:gravity="center"
             android:layout_height="wrap_content"/>
     </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/delete_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAll"
+        android:text="@string/delete_all" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +38,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-
 
 
 </LinearLayout>
