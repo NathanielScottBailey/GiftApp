@@ -40,6 +40,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
 
         ImageView imageDel;
 
+        private int position;
+
         /**
          * Pass through the values that will used when building the recyclerview.
          * @param itemView
@@ -76,11 +78,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
         String text = forWhom + giftName + price + notes;
 
+
         holder.gift_view_text.setText(text);
         holder.imageDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickedItem.ClickedGift(gift);
+                remove(holder.getAdapterPosition());
             }
         });
 
@@ -105,5 +109,10 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
      */
     public interface ClickedItem {
         public void ClickedGift(Gift gift);
+    }
+
+    public void remove(int position) {
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, giftArrayList.size());
     }
 }

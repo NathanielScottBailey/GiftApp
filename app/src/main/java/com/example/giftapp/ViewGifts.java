@@ -48,10 +48,12 @@ public class ViewGifts extends AppCompatActivity implements ViewAdapter.ClickedI
     @Override
     public void ClickedGift(Gift gift) {
         Storage.remove(gift);
+        //viewAdapter.remove(gift.getIndex());
+
 
         //Refreshes Activity
-        Intent intent = new Intent(ViewGifts.this, ViewGifts.class);
-        finish();
-        startActivity(intent);
+//        Intent intent = new Intent(ViewGifts.this, ViewGifts.class);
+//        finish();
+//        startActivity(intent);
     }
 }
