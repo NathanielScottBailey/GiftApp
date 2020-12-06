@@ -21,7 +21,7 @@ public class Gift {
      * @param giftNotes notes about the gift
      *        purchased whether or not the gift has been purchased
      */
-    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes) {
+    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased) {
         if(forWhom.isEmpty() || giftName.isEmpty() || giftPrice.isEmpty()){
             throw new IllegalArgumentException();
         }

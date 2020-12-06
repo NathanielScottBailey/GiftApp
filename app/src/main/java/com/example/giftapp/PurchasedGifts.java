@@ -12,7 +12,7 @@ public class PurchasedGifts extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Gift fakeGift = new Gift("Ben", "New Computer", "8,000", "A very cool computer!");
+        Gift fakeGift = new Gift("Ben", "New Computer", "8,000", "A very cool computer!",false);
         fakeGift.setPurchased(true);
         Storage.add_gift(fakeGift);
         super.onCreate(savedInstanceState);
