@@ -7,14 +7,22 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class PurchasedGifts extends Activity {
     public static final String LOG_TAG = "GiftAppLog: ";
+    public AppDatabase db = AppDatabase.getInstance();
+    List<Gift> giftList = db.giftDao().getAllGifts();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Gift fakeGift = new Gift("Ben", "New Computer", "8,000", "A very cool computer!",false);
-        fakeGift.setPurchased(true);
-        Storage.add_gift(fakeGift);
+
+        // I have put in a method to add a test gift in place of the old fakeGift
+        // This one gets add to the Room database and wil show up in the View Gifts Activity.
+        addTestGift();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.purchased_gifts);
         displayPurchasedGifts();
@@ -22,12 +30,17 @@ public class PurchasedGifts extends Activity {
 
     protected void displayPurchasedGifts(){
         LinearLayout layout = (LinearLayout) findViewById(R.id.purchased_lin_layout);
+
+
         if(layout == null){
             Log.d(LOG_TAG, "FAILURE!!!!");
             return;
         }
-        for(int i = 0; i < Storage.size(); i++){
-            Gift gift = Storage.get_x_element(i);
+        for(int i = 0; i < giftList.size(); i++){
+
+            Gift gift = giftList.get(i);
+
+            // I checked and you are hitting this if statement with the test gift.
             if(gift.getPurchased()){
                 TextView newView = new TextView(getApplicationContext());
                 String text = gift.getGiftName() + " was purchased for $" + gift.getGiftPrice() + " for " + gift.getForWhom() + ".";
@@ -35,5 +48,14 @@ public class PurchasedGifts extends Activity {
                 layout.addView(newView);
             }
         }
+    }
+
+    public void addTestGift() {
+        Gift giftToAdd = new Gift("Ben", "New Computer",
+                "8,000", "A very cool computer!",
+                true);
+
+        // Add giftToAdd to the database.
+        db.giftDao().insertAll(giftToAdd);
     }
 }

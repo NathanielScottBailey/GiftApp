@@ -1,8 +1,13 @@
 package com.example.giftapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +29,28 @@ public class MainActivity extends AppCompatActivity {
      */
     public Storage gifts = new Storage();
 
+    public AppDatabase db;
+
+
+
+    public static GiftDao giftDao;
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        giftDao = AppDatabase.createInstance(this).giftDao();
+
+        giftDao.getAllGifts();
+
         gifts.load_data(getSharedPreferences("shared preferences", MODE_PRIVATE));
+
     }
 
     @Override

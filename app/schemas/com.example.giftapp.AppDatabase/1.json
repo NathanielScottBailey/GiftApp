@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "45d4db81804d77b7ec8bd49142ca5887",
+    "entities": [
+      {
+        "tableName": "Gift",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `forWhom` TEXT, `giftName` TEXT, `giftPrice` TEXT, `giftNotes` TEXT, `purchased` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "forWhom",
+            "columnName": "forWhom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "giftName",
+            "columnName": "giftName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "giftPrice",
+            "columnName": "giftPrice",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "giftNotes",
+            "columnName": "giftNotes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "purchased",
+            "columnName": "purchased",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '45d4db81804d77b7ec8bd49142ca5887')"
+    ]
+  }
+}

@@ -6,27 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterViewHold> {
 
-    private ArrayList<Gift> giftArrayList;
+    private List<Gift> giftList;
     private Context context;
     private ClickedItem clickedItem;
+    public AppDatabase db = AppDatabase.getInstance();
 
 
 
     /**
      * This will bring the passed Gift list inside the class.
-     * @param giftArrayList
+     * @param giftList
      */
-    public void setData(ArrayList<Gift> giftArrayList) {
-        this.giftArrayList = giftArrayList;
+    public void setData(List<Gift> giftList) {
+        this.giftList = giftList;
         notifyDataSetChanged();
     }
 
@@ -40,7 +38,6 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
 
         ImageView imageDel;
 
-        private int position;
 
         /**
          * Pass through the values that will used when building the recyclerview.
@@ -70,21 +67,28 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
 
     @Override
     public void onBindViewHolder(@NonNull ViewAdapter.ViewAdapterViewHold holder, int position) {
-        //Gift gift = giftList.get(position);
-        final Gift gift = Storage.get_x_element(position);
+        Gift gift = giftList.get(position);
+
+        // Gift Info that will be displayed.
         String forWhom = "For " + gift.getForWhom() + ":\n";
         String giftName = "Gift: " + gift.getGiftName() + "\n";
         String price = "Price: " + gift.getGiftPrice() + "\n";
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
-        String text = forWhom + giftName + price + notes;
+        String purchased = "Purchased: " + gift.getPurchased() + "\n";
+        String text = forWhom + giftName + price + notes + purchased;
 
 
         holder.gift_view_text.setText(text);
         holder.imageDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int position = holder.getAdapterPosition();
                 clickedItem.ClickedGift(gift);
-                remove(holder.getAdapterPosition());
+                db.giftDao().deleteGift(gift);
+                giftList.remove(position);
+                notifyItemRemoved(position);
+
             }
         });
 
@@ -99,7 +103,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
      */
     @Override
     public int getItemCount() {
-        return giftArrayList.size();
+        return giftList.size();
     }
 
     public ViewAdapter(ClickedItem clickedItem) {
@@ -114,19 +118,21 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
     }
 
 
-    public void remove(int position) {
+    public void remove(int position, Gift gift) {
+        //db.giftDao().deleteGift(gift);
+        notifyDataSetChanged();
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, giftArrayList.size());
+        notifyItemRangeChanged(position, giftList.size());
     }
 
     public void clear() {
-        int size = giftArrayList.size();
+        int size = giftList.size();
         if (size > 0) {
             for (int i = 0; i < size; i++) {
-                giftArrayList.remove(0);
+                giftList.remove(0);
             }
-
-            notifyItemRangeRemoved(0, size);
+            notifyItemRangeRemoved(0,size);
+            //notifyItemRangeRemoved(0, 0);
         }
     }
 

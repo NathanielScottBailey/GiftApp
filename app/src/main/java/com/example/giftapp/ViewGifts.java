@@ -10,12 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
+import java.util.List;
 
 public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
     static TextView view_gift_result;
 
     RecyclerView recyclerView;
     ViewAdapter viewAdapter;
+
+    public AppDatabase db = AppDatabase.getInstance();
+    List<Gift> giftList = db.giftDao().getAllGifts();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +38,27 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
 
     }
 
+
+
+
     public void getGifts() {
         // Give data to ViewAdapter
-        viewAdapter.setData(Storage.getGiftArrayList());
+        viewAdapter.setData(giftList);
         recyclerView.setAdapter(viewAdapter);
 
 
 
     }
 
+    /**
+     * Deletes all Gifts
+     * @param view
+     */
     public void deleteAll(View view) {
-        viewAdapter.clear();
         Storage.clear();
-        }
-        //Refreshes Activity
-//        Intent intent = new Intent(ViewGifts.this, ViewGifts.class);
-//        finish();
-//        startActivity(intent);
-
-
+        db.giftDao().nuke();
+        viewAdapter.clear();
+    }
 
 
 
@@ -60,6 +68,7 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
      */
     @Override
     public void ClickedGift(Gift gift) {
-        Storage.remove(gift);
+        db.giftDao().deleteGift(gift);
+
     }
 }
