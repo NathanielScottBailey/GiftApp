@@ -20,19 +20,8 @@ public class ViewGifts extends AppCompatActivity implements ViewAdapter.ClickedI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_gifts);
-        //view_gift_result = findViewById(R.id.gift_view);
 
-        //view_gift_result.append("\n");
-
-
-//        if (Storage.size() == 0)
-//            view_gift_result.append("There are no gifts.");
-
-        //showGiftInfo();
-
-
-
-
+        // Set up recyclerview
         recyclerView = findViewById(R.id.recyclerview_view_gifts);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -58,8 +47,6 @@ public class ViewGifts extends AppCompatActivity implements ViewAdapter.ClickedI
      */
     @Override
     public void ClickedGift(Gift gift) {
-
-
         Storage.remove(gift);
 
         //Refreshes Activity

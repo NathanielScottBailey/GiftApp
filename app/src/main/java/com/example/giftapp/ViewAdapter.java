@@ -21,16 +21,6 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
 
 
 
-
-
-//    /**
-//     * This will bring the passed clicked item into the class
-//     * @param clickedItem
-//     */
-//    public ViewAdapter(ClickedItem clickedItem) {
-//        this.clickedItem = clickedItem;
-//    }
-
     /**
      * This will bring the passed Gift list inside the class.
      * @param giftArrayList
