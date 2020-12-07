@@ -7,42 +7,69 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/add_text3"
-        android:layout_width="72dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/gift_price"
-        android:textSize="14sp"
+        android:id="@+id/textView2"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorAccent"
+        android:text="@string/add_gift"
+        android:textSize="19sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/add_input3"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_text2" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/add_gift_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="add_gift"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/add_gift"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <EditText
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/add_input1"
+        android:layout_width="264dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/add_fromWhom_input"
+        android:layout_width="264dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_input1" />
 
     <TextView
-        android:id="@+id/add_text4"
-        android:layout_width="72dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/gift_notes"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/add_input4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_text3" />
-
-    <TextView
+        android:textColor="@color/colorAccent"
         android:id="@+id/add_text1"
         android:layout_width="72dp"
         android:layout_height="38dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="75dp"
         android:text="@string/for_whom"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -52,93 +79,149 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/colorAccent"
+        android:id="@+id/add_address_text"
+        android:layout_width="72dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:text="Address:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/add_input1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_fromWhom_text" />
+
+    <EditText
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/add_address_input"
+        android:layout_width="264dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_fromWhom_input" />
+
+    <TextView
+        android:textColor="@color/colorAccent"
+        android:id="@+id/add_fromWhom_text"
+        android:layout_width="93dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:text="From Whom :"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/add_address_text"
+        app:layout_constraintEnd_toStartOf="@+id/add_input1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_text1" />
+
+    <TextView
+        android:textColor="@color/colorAccent"
         android:id="@+id/add_text2"
         android:layout_width="72dp"
         android:layout_height="38dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/gift_name"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/add_input2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_text1" />
+        app:layout_constraintTop_toBottomOf="@+id/add_address_text" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/add_gift"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:visibility="visible"
+    <CheckBox
+        android:textColor="@color/colorAccent"
+        android:id="@+id/purchasedCheckBox"
+        android:layout_width="355dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="1dp"
+        android:text="Already Purchased?"
+        app:layout_constraintBottom_toTopOf="@+id/add_gift_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/add_gift_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="add_gift"
-        android:text="@string/add_gift"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintTop_toBottomOf="@+id/add_input4"
+        app:layout_constraintVertical_bias="0.097" />
 
     <EditText
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/add_input2"
+        android:layout_width="264dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_address_input" />
+
+    <EditText
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/add_input4"
         android:layout_width="264dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_input3" />
 
     <EditText
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/add_input3"
         android:layout_width="264dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_input2" />
 
-    <EditText
-        android:id="@+id/add_input2"
-        android:layout_width="264dp"
+    <TextView
+        android:textColor="@color/colorAccent"
+        android:id="@+id/add_text4"
+        android:layout_width="72dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_input1" />
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/gift_notes"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/add_input4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_text3" />
 
-    <EditText
-        android:id="@+id/add_input1"
-        android:layout_width="264dp"
+    <TextView
+        android:textColor="@color/colorAccent"
+        android:id="@+id/add_text3"
+        android:layout_width="72dp"
         android:layout_height="38dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/gift_price"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/add_input3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

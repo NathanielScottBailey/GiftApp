@@ -2,10 +2,6 @@ package com.example.giftapp;
 
 import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Storage {
@@ -22,8 +18,8 @@ public class Storage {
     /**
      * Add a gift by each string element
      */
-    public static void add_gift (String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased){
-        collection.add(new Gift(forWhom,giftName,giftPrice,giftNotes,purchased));
+    public static void add_gift (String forWhom, String fromWhom, String address, String giftName, String giftPrice, String giftNotes, boolean purchased){
+        collection.add(new Gift(forWhom, fromWhom, address, giftName, giftPrice, giftNotes, purchased));
     }
 
     /**
@@ -54,30 +50,14 @@ public class Storage {
         return collection.size();
     }
 
-    /**
-     * saved the entire arraylist to the devices memory
-     * @param sharedPreferences passes in getSharedPreferences("shared preferences", MODE_PRIVATE)
-     */
-    public void save_data(SharedPreferences sharedPreferences){
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(collection);
-        editor.putString("gifts", json);
-        editor.apply();
+    public int save_data(SharedPreferences shared_preferences){
+
+        return 0;
     }
 
-    /**
-     * loads the entire arraylist to the devices memory
-     * @param sharedPreferences passes in getSharedPreferences("shared preferences", MODE_PRIVATE)
-     */
-    public void load_data(SharedPreferences sharedPreferences){
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("gifts", null);
-        Type type = new TypeToken<ArrayList<Gift>>() {}.getType();
-        ArrayList <Gift> loading = new ArrayList<Gift>();
-        collection = gson.fromJson(json, type);
-        if (collection == null) {collection = new ArrayList<>();
-        }
+    public int load_data(SharedPreferences shared_preferences){
+
+        return 0;
     }
 
     public static void clear() {

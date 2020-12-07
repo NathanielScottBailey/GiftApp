@@ -18,9 +18,14 @@ public class Gift {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-
     @ColumnInfo(name = "forWhom")
     private String forWhom;
+
+    @ColumnInfo(name = "fromWhom")
+    private String fromWhom;
+
+    @ColumnInfo(name = "address")
+    private String address;
 
     @ColumnInfo(name = "giftName")
     private String giftName;
@@ -42,11 +47,13 @@ public class Gift {
      * @param giftNotes notes about the gift
      *        purchased whether or not the gift has been purchased
      */
-    public Gift(String forWhom, String giftName, String giftPrice, String giftNotes, boolean purchased) {
+    public Gift(String forWhom, String fromWhom, String address, String giftName, String giftPrice, String giftNotes, boolean purchased) {
         if(forWhom.isEmpty() || giftName.isEmpty() || giftPrice.isEmpty()){
             throw new IllegalArgumentException();
         }
         this.forWhom = forWhom;
+        this.fromWhom = fromWhom;
+        this.address = address;
         this.giftName = giftName;
         this.giftPrice = giftPrice;
         this.purchased = purchased;
@@ -64,6 +71,14 @@ public class Gift {
 
     public String getForWhom() {
         return forWhom;
+    }
+
+    public String getFromWhom() {
+        return fromWhom;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getGiftName() {

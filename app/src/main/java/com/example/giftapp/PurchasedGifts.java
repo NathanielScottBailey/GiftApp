@@ -51,11 +51,9 @@ public class PurchasedGifts extends Activity {
     }
 
     public void addTestGift() {
-        Gift giftToAdd = new Gift("Ben", "New Computer",
-                "8,000", "A very cool computer!",
-                true);
+        //Gift giftToAdd = new Gift("Ben", "New Computer", "8,000", "A very cool computer!", true);
 
         // Add giftToAdd to the database.
-        db.giftDao().insertAll(giftToAdd);
+        //db.giftDao().insertAll(giftToAdd);
     }
 }

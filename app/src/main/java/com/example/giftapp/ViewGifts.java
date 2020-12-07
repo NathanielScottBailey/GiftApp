@@ -38,16 +38,10 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
 
     }
 
-
-
-
     public void getGifts() {
         // Give data to ViewAdapter
         viewAdapter.setData(giftList);
         recyclerView.setAdapter(viewAdapter);
-
-
-
     }
 
     /**
@@ -59,8 +53,6 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
         db.giftDao().nuke();
         viewAdapter.clear();
     }
-
-
 
     /**
      * Handles removing gift from Storage when the delete button is pressed.

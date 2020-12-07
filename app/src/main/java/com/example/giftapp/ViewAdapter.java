@@ -70,12 +70,14 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         Gift gift = giftList.get(position);
 
         // Gift Info that will be displayed.
-        String forWhom = "For " + gift.getForWhom() + ":\n";
+        String forWhom = "For: " + gift.getForWhom() + "\n";
+        String fromWhom = "From: " + gift.getFromWhom() + "\n";
+        String address = "Address: " + gift.getAddress() + "\n";
         String giftName = "Gift: " + gift.getGiftName() + "\n";
         String price = "Price: " + gift.getGiftPrice() + "\n";
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
         String purchased = "Purchased: " + gift.getPurchased() + "\n";
-        String text = forWhom + giftName + price + notes + purchased;
+        String text = forWhom + fromWhom + address + giftName + price + notes + purchased + "\n";
 
 
         holder.gift_view_text.setText(text);

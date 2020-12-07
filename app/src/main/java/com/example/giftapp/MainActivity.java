@@ -31,14 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public AppDatabase db;
 
-
-
     public static GiftDao giftDao;
-
-
-
-
-
 
 
     @Override
@@ -46,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         giftDao = AppDatabase.createInstance(this).giftDao();
-
+        // giftDao.nuke();  // DEBUG: Delete all items in the database.
         giftDao.getAllGifts();
 
         gifts.load_data(getSharedPreferences("shared preferences", MODE_PRIVATE));

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "45d4db81804d77b7ec8bd49142ca5887",
+    "identityHash": "5ce91c7b93d81d5c409ab54dc71c1016",
     "entities": [
       {
         "tableName": "Gift",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `forWhom` TEXT, `giftName` TEXT, `giftPrice` TEXT, `giftNotes` TEXT, `purchased` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `forWhom` TEXT, `fromWhom` TEXT, `address` TEXT, `giftName` TEXT, `giftPrice` TEXT, `giftNotes` TEXT, `purchased` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -17,6 +17,18 @@
           {
             "fieldPath": "forWhom",
             "columnName": "forWhom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fromWhom",
+            "columnName": "fromWhom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -58,7 +70,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '45d4db81804d77b7ec8bd49142ca5887')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5ce91c7b93d81d5c409ab54dc71c1016')"
     ]
   }
 }
