@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -34,8 +35,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
     public class ViewAdapterViewHold extends RecyclerView.ViewHolder {
 
 
-        TextView gift_view_text;
-
+        TextView gift_view_text,noUnPurchasedGifts ;
+        Button addToPurchased;
         ImageView imageDel;
 
 
@@ -47,6 +48,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
             super(itemView);
             gift_view_text = itemView.findViewById(R.id.gift_view_text);
             imageDel = itemView.findViewById(R.id.imageDel);
+            addToPurchased =  itemView.findViewById(R.id.giftIsPurchased);
+            noUnPurchasedGifts = itemView.findViewById(R.id.noUnPurchased);
 
         }
     }
@@ -78,9 +81,29 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
         String purchased = "Purchased: " + gift.getPurchased() + "\n";
         String text = forWhom + fromWhom + address + giftName + price + notes + purchased + "\n";
+        String unpurchased = "You have no gifts yet";
+
+        if(giftList.size() != 0){
+            holder.gift_view_text.setText(text);
+        }else{
+            holder.noUnPurchasedGifts.setText(unpurchased);
+        }
+
+        holder.addToPurchased.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Gift purchasedGift = gift;
+                int position = holder.getAdapterPosition();
+                db.giftDao().updateGift(gift);
+                giftList.remove(position);
+                notifyItemRemoved(position);
+                purchasedGift.setPurchased(true);
+                clickedItem.UpdateGift(purchasedGift);
 
 
-        holder.gift_view_text.setText(text);
+
+            }
+        });;
         holder.imageDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,6 +140,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
      */
     public interface ClickedItem {
         public void ClickedGift(Gift gift);
+        public void UpdateGift(Gift gift);
     }
 
 

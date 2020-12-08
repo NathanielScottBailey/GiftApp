@@ -11,14 +11,18 @@ import java.util.List;
 @Dao
 public interface GiftDao {
 
+
+    @Update
+    public void updateGift(Gift... gift);
+
     @Query("SELECT * FROM gift")
     List<Gift> getAllGifts ();
 
+    @Query("SELECT * FROM gift WHERE purchased LIKE :decision ")
+    List<Gift> getPurchasedGifts (boolean decision);
+
     @Delete
     void deleteGift(Gift gift);
-//
-//    @Query("DELETE FROM gift WHERE  ")
-//    public void delete(Gif gif)
 
     @Insert
     void insertAll(Gift... gifts);

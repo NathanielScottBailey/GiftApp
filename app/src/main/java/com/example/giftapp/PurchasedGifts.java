@@ -7,53 +7,53 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
-public class PurchasedGifts extends Activity {
-    public static final String LOG_TAG = "GiftAppLog: ";
-    public AppDatabase db = AppDatabase.getInstance();
-    List<Gift> giftList = db.giftDao().getAllGifts();
+public class  PurchasedGifts extends Activity implements PurchasedGiftsAdapter.ClickedItem{
 
+    public static final String LOG_TAG = "Here is the purchased: ";
+    public AppDatabase db = AppDatabase.getInstance();
+    List<Gift> giftList = db.giftDao().getPurchasedGifts(true);
+
+
+    RecyclerView recyclerView;
+
+    PurchasedGiftsAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // I have put in a method to add a test gift in place of the old fakeGift
-        // This one gets add to the Room database and wil show up in the View Gifts Activity.
-        addTestGift();
+        Log.d(LOG_TAG, giftList.toString());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.purchased_gifts);
-        displayPurchasedGifts();
+
+        recyclerView = findViewById(R.id.purchaseRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        adapter = new PurchasedGiftsAdapter(this);
+
+        getGifts();
+
     }
 
-    protected void displayPurchasedGifts(){
-        LinearLayout layout = (LinearLayout) findViewById(R.id.purchased_lin_layout);
+    @Override
+    public void ClickedGift(Gift gift) {
+        db.giftDao().deleteGift(gift);
 
-
-        if(layout == null){
-            Log.d(LOG_TAG, "FAILURE!!!!");
-            return;
-        }
-        for(int i = 0; i < giftList.size(); i++){
-
-            Gift gift = giftList.get(i);
-
-            // I checked and you are hitting this if statement with the test gift.
-            if(gift.getPurchased()){
-                TextView newView = new TextView(getApplicationContext());
-                String text = gift.getGiftName() + " was purchased for $" + gift.getGiftPrice() + " for " + gift.getForWhom() + ".";
-                newView.setText((CharSequence) text);
-                layout.addView(newView);
-            }
-        }
     }
 
-    public void addTestGift() {
-        //Gift giftToAdd = new Gift("Ben", "New Computer", "8,000", "A very cool computer!", true);
-
-        // Add giftToAdd to the database.
-        //db.giftDao().insertAll(giftToAdd);
+    public void getGifts() {
+        // Give data to ViewAdapter
+        adapter.setData(giftList);
+        recyclerView.setAdapter(adapter);
     }
+
+
 }
+

@@ -4,16 +4,42 @@
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="150dp"
+        android:paddingBottom="2dp">
+
+        <Button
+            android:id="@+id/giftIsPurchased"
+            android:layout_width="140dp"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="264dp"
+            android:layout_marginLeft="264dp"
+            android:layout_marginBottom="5dp"
+            android:onClick="AddToPurchased"
+            android:text="@string/purchase" />
+
         <RelativeLayout
-            android:layout_marginTop="5dp"
             android:layout_width="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/christmasRed"
             android:layout_height="25dp" >
+
+            <TextView
+                android:id="@+id/noUnPurchased"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="198dp"
+                android:layout_marginLeft="198dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@android:color/holo_red_dark" />
+
             <TextView
                 android:id="@+id/prefix"
                 android:textColor="@android:color/black"
-                android:text="Gift"
+                android:text="@string/gift"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

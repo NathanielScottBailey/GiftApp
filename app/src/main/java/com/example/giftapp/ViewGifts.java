@@ -1,4 +1,4 @@
-package com.example.giftapp;
+  package com.example.giftapp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,7 +21,7 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
     ViewAdapter viewAdapter;
 
     public AppDatabase db = AppDatabase.getInstance();
-    List<Gift> giftList = db.giftDao().getAllGifts();
+    List<Gift> giftList = db.giftDao().getPurchasedGifts(false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,9 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
 
     }
 
+
+
+
     public void getGifts() {
         // Give data to ViewAdapter
         viewAdapter.setData(giftList);
@@ -49,11 +52,19 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
      * @param view
      */
     public void deleteAll(View view) {
+        for (int i = 0; i < giftList.size(); i++){
+            db.giftDao().deleteGift(giftList.get(i));
+        }
         Storage.clear();
-        db.giftDao().nuke();
         viewAdapter.clear();
     }
 
+
+    @Override
+    public void UpdateGift(Gift gift){
+        db.giftDao().updateGift(gift);
+
+    }
     /**
      * Handles removing gift from Storage when the delete button is pressed.
      * @param gift
