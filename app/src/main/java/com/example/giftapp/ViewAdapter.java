@@ -81,12 +81,12 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
         String purchased = "Purchased: " + gift.getPurchased() + "\n";
         String text = forWhom + fromWhom + address + giftName + price + notes + purchased + "\n";
-        String unpurchased = "You have no gifts yet";
+        String unPurchased = "You have no gifts yet";
 
         if(giftList.size() != 0){
             holder.gift_view_text.setText(text);
         }else{
-            holder.noUnPurchasedGifts.setText(unpurchased);
+            holder.noUnPurchasedGifts.setText(unPurchased);
         }
 
         holder.addToPurchased.setOnClickListener(new View.OnClickListener() {
