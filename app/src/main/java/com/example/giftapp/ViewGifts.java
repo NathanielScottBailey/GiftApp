@@ -54,6 +54,13 @@ public class ViewGifts extends Activity implements ViewAdapter.ClickedItem {
         viewAdapter.clear();
     }
 
+    /**
+     * Nukes all the gifts from the app.
+     * @param view
+     */
+    public void nukeAll(View view) {
+        db.giftDao().nuke();
+    }
 
     @Override
     public void UpdateGift(Gift gift){

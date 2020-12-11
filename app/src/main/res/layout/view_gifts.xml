@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:background="@color/colorPrimary"
+        android:background="@color/christmasGreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -23,7 +23,7 @@
 
     <Button
         android:textColor="#FFFFFF"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/christmasGreen"
         android:id="@+id/delete_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

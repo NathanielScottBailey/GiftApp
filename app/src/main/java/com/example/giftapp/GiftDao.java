@@ -13,7 +13,7 @@ public interface GiftDao {
 
 
     @Update
-    public void updateGift(Gift... gift);
+    void updateGift(Gift... gift);
 
     @Query("SELECT * FROM gift")
     List<Gift> getAllGifts ();

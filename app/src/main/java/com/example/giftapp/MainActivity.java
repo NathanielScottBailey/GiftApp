@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         postList.enqueue(new Callback<List<ServerMessage>>() {
             @Override
-            public void onResponse(Call<List<ServerMessage>> call, Response<List<ServerMessage>> response) {
+            public void onResponse(Call<List<ServerMessage>> call,
+                                   Response<List<ServerMessage>> response) {
                 if(response.isSuccessful()){
                     List<ServerMessage> serverMessages = response.body();
 
