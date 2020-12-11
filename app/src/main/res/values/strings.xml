@@ -16,4 +16,5 @@
     <string name="string_gift" />
     <string name="from_me">From: Me</string>
     <string name="purchase">Purchase</string>
+    <string name="motd">MOTD</string>
 </resources>
