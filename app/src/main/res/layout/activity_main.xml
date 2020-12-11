@@ -12,14 +12,12 @@
         android:id="@+id/addgift_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
         android:layout_marginTop="440dp"
         android:backgroundTint="@color/colorPrimary"
         android:onClick="view_add_gifts"
         android:text="@string/add_gifts_activity"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewgifts_activity_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
