@@ -1,19 +1,12 @@
 package com.example.giftapp;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddGifts extends AppCompatActivity {
     public static final String LOG_TAG = "GiftAppLog: ";

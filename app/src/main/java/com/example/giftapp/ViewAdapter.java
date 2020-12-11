@@ -139,17 +139,10 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
      * Clicked item interface.
      */
     public interface ClickedItem {
-        public void ClickedGift(Gift gift);
-        public void UpdateGift(Gift gift);
+        void ClickedGift(Gift gift);
+        void UpdateGift(Gift gift);
     }
 
-
-    public void remove(int position, Gift gift) {
-        //db.giftDao().deleteGift(gift);
-        notifyDataSetChanged();
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, giftList.size());
-    }
 
     public void clear() {
         int size = giftList.size();
