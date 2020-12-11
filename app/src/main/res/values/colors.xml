@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8B671C</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#D80000</color>
+    <color name="colorPrimaryDark">#7C0E0E</color>
+    <color name="colorAccent">#146B3A</color>
+
+
     <color name="christmasGreen">#146B3A</color>
     <color name="christmasRed">#FF3434</color>
     <color name="gold">#ffcc00</color>
