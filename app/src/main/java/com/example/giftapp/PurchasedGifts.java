@@ -3,6 +3,8 @@ package com.example.giftapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +50,14 @@ public class  PurchasedGifts extends Activity implements PurchasedGiftsAdapter.C
         // Give data to ViewAdapter
         adapter.setData(giftList);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void deleteAll(View view) {
+        for (int i = 0; i < giftList.size(); i++){
+            db.giftDao().deleteGift(giftList.get(i));
+        }
+        Storage.clear();
+        adapter.clear();
     }
 
 

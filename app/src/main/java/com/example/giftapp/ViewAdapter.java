@@ -35,7 +35,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
     public class ViewAdapterViewHold extends RecyclerView.ViewHolder {
 
 
-        TextView gift_view_text,noUnPurchasedGifts ;
+        TextView gift_view_text;
         Button addToPurchased;
         ImageView imageDel;
 
@@ -49,7 +49,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
             gift_view_text = itemView.findViewById(R.id.gift_view_text);
             imageDel = itemView.findViewById(R.id.imageDel);
             addToPurchased =  itemView.findViewById(R.id.giftIsPurchased);
-            noUnPurchasedGifts = itemView.findViewById(R.id.noUnPurchased);
+
 
         }
     }
@@ -81,13 +81,9 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewAdapterVie
         String notes = "Notes: " + gift.getGiftNotes() + "\n";
         String purchased = "Purchased: " + gift.getPurchased() + "\n";
         String text = forWhom + fromWhom + address + giftName + price + notes + purchased + "\n";
-        String unPurchased = "You have no gifts yet";
 
-        if(giftList.size() != 0){
-            holder.gift_view_text.setText(text);
-        }else{
-            holder.noUnPurchasedGifts.setText(unPurchased);
-        }
+
+        holder.gift_view_text.setText(text);
 
         holder.addToPurchased.setOnClickListener(new View.OnClickListener() {
             @Override

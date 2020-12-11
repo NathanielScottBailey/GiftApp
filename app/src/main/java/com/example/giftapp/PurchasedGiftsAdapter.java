@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,8 @@ public class PurchasedGiftsAdapter extends RecyclerView.Adapter<PurchasedGiftsAd
     public class ViewAdapterViewHold extends RecyclerView.ViewHolder {
 
 
-        TextView giftName, giftToWho, giftPrice, giftComment, giftAddress, giftFromWho, noPurchasedGifts;
+        TextView gift_view_purchased;
+        ImageView imageDelPurchased;
 
 
 
@@ -46,13 +48,9 @@ public class PurchasedGiftsAdapter extends RecyclerView.Adapter<PurchasedGiftsAd
         public ViewAdapterViewHold(@NonNull View itemView) {
             super(itemView);
 
-            giftName = itemView.findViewById(R.id.giftNamePurchased);
-            giftToWho = itemView.findViewById(R.id.giftToWhoPurchased);
-            giftPrice = itemView.findViewById(R.id.giftPricePurchased);
-            giftComment = itemView.findViewById(R.id.giftCommentPurchased);
-            giftAddress = itemView.findViewById(R.id.giftAddressPurchased);
-            giftFromWho = itemView.findViewById(R.id.fromWhomPurchased);
-            noPurchasedGifts = itemView.findViewById(R.id.noPurchased);
+            imageDelPurchased = itemView.findViewById(R.id.imageDelPurchased);
+            gift_view_purchased = itemView.findViewById(R.id.gift_view_purchased);
+
 
         }
     }
@@ -74,28 +72,33 @@ public class PurchasedGiftsAdapter extends RecyclerView.Adapter<PurchasedGiftsAd
     @Override
     public void onBindViewHolder(@NonNull ViewAdapterViewHold holder, int position) {
         Gift gift = giftList.get(position);
-
         // Gift Info that will be displayed.
-        String forWhom = "For " + gift.getForWhom() ;
-        String giftName = "Gift: " + gift.getGiftName() ;
-        String price = "$" + gift.getGiftPrice() ;
-        String notes = "Comment: " + gift.getGiftNotes() ;
-        String fromWhom = "From: " + gift.getFromWhom() ;
-        String address = "Address: " + gift.getAddress();
-        String notPurchased = "You have not purchased any gifts yet" ;
+        String forWhom = "For: " + gift.getForWhom() + "\n";
+        String fromWhom = "From: " + gift.getFromWhom() + "\n";
+        String address = "Address: " + gift.getAddress() + "\n";
+        String giftName = "Gift: " + gift.getGiftName() + "\n";
+        String price = "Price: " + gift.getGiftPrice() + "\n";
+        String notes = "Notes: " + gift.getGiftNotes() + "\n";
+        String purchased = "Purchased: " + gift.getPurchased() + "\n";
+        String text = forWhom + fromWhom + address + giftName + price + notes + purchased + "\n";
 
 
-        if(giftList.size() != 0){
-            holder.giftName.setText(giftName);
-            holder.giftToWho.setText(forWhom);
-            holder.giftPrice.setText(price);
-            holder.giftComment.setText(notes);
-            holder.giftFromWho.setText(fromWhom);
-            holder.giftAddress.setText(address); }
 
-        else{
-            holder.noPurchasedGifts.setText(notPurchased);
-        }
+
+        holder.gift_view_purchased.setText(text);
+
+        holder.imageDelPurchased.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int position = holder.getAdapterPosition();
+                clickedItem.ClickedGift(gift);
+                db.giftDao().deleteGift(gift);
+                giftList.remove(position);
+                notifyItemRemoved(position);
+
+            }
+        });
     }
 
     /**
@@ -117,5 +120,17 @@ public class PurchasedGiftsAdapter extends RecyclerView.Adapter<PurchasedGiftsAd
     public interface ClickedItem {
         public void ClickedGift(Gift gift);
     }
+
+    public void clear() {
+        int size = giftList.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                giftList.remove(0);
+            }
+            notifyItemRangeRemoved(0,size);
+            //notifyItemRangeRemoved(0, 0);
+        }
+    }
+
 
 }
