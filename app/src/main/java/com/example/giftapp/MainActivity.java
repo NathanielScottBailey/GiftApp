@@ -1,26 +1,12 @@
 package com.example.giftapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,13 +21,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public Storage gifts = new Storage();
 
-    public AppDatabase db;
-
     public static GiftDao giftDao;
 
     private TextView motd;
-    public String motdString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

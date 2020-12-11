@@ -17,4 +17,7 @@
     <string name="from_me">From: Me</string>
     <string name="purchase">Purchase</string>
     <string name="motd">MOTD</string>
+    <string name="already_purchased">Already Purchased?</string>
+    <string name="from_whom">From Whom :</string>
+    <string name="address">Address:</string>
 </resources>

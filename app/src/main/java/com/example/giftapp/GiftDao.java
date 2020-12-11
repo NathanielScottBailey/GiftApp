@@ -28,5 +28,5 @@ public interface GiftDao {
     void insertAll(Gift... gifts);
 
     @Query("DELETE FROM gift")
-    public void nuke();
+    void nuke();
 }
