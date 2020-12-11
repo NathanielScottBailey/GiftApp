@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
     public static GiftDao giftDao;
 
     private TextView motd;
-    public String motdString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
